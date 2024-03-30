@@ -15,7 +15,11 @@ export async function POST(request: NextRequest) {
       $or: [{ email: credential }, { username: credential }],
     });
 
-    if (!user) return NextResponse.json("User does not exist");
+    if (!user)
+      return NextResponse.json(
+        { error: "Password does not match" },
+        { status: 400 }
+      );
 
     const validPassword = await bcryptjs.compare(password, user.password);
 

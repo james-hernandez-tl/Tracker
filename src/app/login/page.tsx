@@ -35,7 +35,7 @@ export default function LoginPage() {
   }, [user]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col  items-center min-h-screen">
       <h1>Login</h1>
       <label htmlFor="username">Email or Username</label>
       <input
@@ -53,6 +53,7 @@ export default function LoginPage() {
       />
       <button onClick={onLogin}>Login</button>
       <Link href="/signup">Don't have an account? Signup</Link>
+      <Link href="/forgotPassword">Forgot password?</Link>
     </div>
   );
 }
