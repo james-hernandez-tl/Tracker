@@ -77,7 +77,7 @@ export default function LoginPage() {
         type="password"
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
-        className="border-black border-2 rounded-md px-2"
+        className="border-black border-2 rounded-md px-2 "
         ref={passwordRef}
       />
       <button
