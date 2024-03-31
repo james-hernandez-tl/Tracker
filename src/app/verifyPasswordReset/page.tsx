@@ -15,7 +15,7 @@ export default function VerifyPasswordReset() {
       setVerified(true);
     } catch (error: any) {
       setError(true);
-      console.log(error.response.data);
+      console.log("Password change failed");
     }
   };
 
@@ -25,20 +25,25 @@ export default function VerifyPasswordReset() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center p-2 min-h-screen">
+    <div className="flex flex-col items-center  min-h-screen">
       <h1 className="text-4xl">Change Password</h1>
-      <h2 className="p-2 bg-red-500">{token ? `${token}` : "no token"}</h2>
-      <div>
+      <h2 className="p-2 mb-2 bg-red-500">{token ? `${token}` : "no token"}</h2>
+      <div className="flex gap-1">
         <label htmlFor="">New password</label>
         <input
           type="text"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="border-black border-2 rounded-md px-2 mb-2"
         />
       </div>
       <button
         disabled={token.length === 0 || password.length === 0}
-        className="px-4 py-2 bg-orange-400"
+        className={`px-4 py-1 mt-2  rounded-sm cursor-pointer  ${
+          token.length === 0 || password.length === 0
+            ? "bg-gray-400 hover:bg-gray-400"
+            : "bg-green-400 hover:bg-green-500"
+        }`}
         onClick={verifyUserPassword}
       >
         Update Password

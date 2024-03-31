@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
 
     if (!user)
       return NextResponse.json(
-        { error: "Password does not match" },
+        { error: "User does not exist" },
         { status: 400 }
       );
 
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
     if (!validPassword)
       return NextResponse.json(
-        { error: "Password does not match" },
+        { error: "Incorrect password" },
         { status: 400 }
       );
 
@@ -50,6 +50,6 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error: any) {
-    NextResponse.json({ error: error.message });
+    NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

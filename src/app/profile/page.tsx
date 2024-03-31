@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -27,6 +27,7 @@ export default function Profile() {
   }, []);
   return (
     <div>
+      <Toaster position="top-center" />
       <h1>Profile</h1>
       <div
         className="px-4 py-2 bg-sky-400 w-fit cursor-pointer hover:bg-sky-500"

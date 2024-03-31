@@ -14,18 +14,24 @@ export async function POST(request: NextRequest) {
     console.log(reqBody);
 
     //check if user exist
-    const user = await User.findOne({ email });
+    const user = await User.findOne({
+      $or: [{ email: email }, { username: username }],
+    });
 
     if (user) {
       return NextResponse.json(
-        { error: "User already exist" },
+        {
+          error: `${
+            user.email === email ? "email" : "username"
+          } already in use`,
+        },
         { status: 400 }
       );
     }
     //hash password
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
-
+    console.log("created Password");
     const newUser = new User({
       username,
       email,
