@@ -1,5 +1,6 @@
 import React from "react";
 import Selectors from "./components/Selectors";
+import selector from "@/types/selector";
 
 export default function DashBoard() {
   return (
@@ -15,18 +16,25 @@ export default function DashBoard() {
 
       <div className="flex justify-around pt-10">
         {data.map((selector: selector, index) => (
-          <Selectors text={selector.text} image={selector.image} key={index} />
+          <Selectors
+            text={selector.text}
+            image={selector.image}
+            url={selector.url}
+            key={index}
+          />
         ))}
       </div>
     </section>
   );
 }
 
-type selector = { text: string; image: string };
-
 const data = [
-  { text: "your monthly journal", image: "/testing.png" },
-  { text: "reflections", image: "" },
-  { text: "breathing exercises", image: "" },
-  { text: "yearly tracker", image: "" },
+  {
+    text: "your monthly journal",
+    image: "/testing.png",
+    url: "/monthly/moods",
+  },
+  { text: "reflections", image: "", url: "/monthly/moods" },
+  { text: "breathing exercises", image: "", url: "/monthly/moods" },
+  { text: "yearly tracker", image: "", url: "/monthly/moods" },
 ];

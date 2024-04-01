@@ -1,16 +1,12 @@
 import React from "react";
+import selector from "@/types/selector";
+import Link from "next/link";
 
-export default function Selectors({
-  text,
-  image,
-}: {
-  text: string;
-  image: string;
-}) {
+export default function Selectors({ text, image, url }: selector) {
   return (
-    <div>
+    <Link href={url}>
       <div>{text}</div>
       {image && <img src={image} className="max-w-sm" />}
-    </div>
+    </Link>
   );
 }

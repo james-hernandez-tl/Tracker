@@ -1,9 +1,10 @@
 import React from "react";
 import Square from "@/app/components/Square";
+import Grid from "../components/Grid";
 
 export default function Monthly({ params }: { params: { emotion: string } }) {
   return (
-    <section id="Monthly">
+    <section id="Monthly" className="focus:outline-2">
       <div className="w-fit">
         <h1 className="text-5xl font-semibold">
           Lets talk... {params.emotion}.
@@ -12,7 +13,7 @@ export default function Monthly({ params }: { params: { emotion: string } }) {
       </div>
 
       <div className="flex justify-between">
-        <div>GRID</div>
+        <Grid />
         <div>
           <div className="text-xl">
             <div>Choose an emotion option</div>
