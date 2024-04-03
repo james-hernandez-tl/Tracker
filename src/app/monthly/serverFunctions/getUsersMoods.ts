@@ -24,5 +24,10 @@ export default async function getUsersMoods() {
     userId,
   });
 
-  return allMoods;
+  return allMoods.map((mood) => ({
+    _id: mood._id.toJSON(),
+    userId: mood.userId,
+    createdAt: mood.createdAt,
+    choice: mood.choice,
+  }));
 }

@@ -9,7 +9,6 @@ export default async function createUserMood(choice: string, date: Date) {
     removeTimeFromDate(date);
 
     const mood = await Mood.findOne({ userId, createdAt: date });
-
     if (mood) return undefined;
 
     const newMood = new Mood({

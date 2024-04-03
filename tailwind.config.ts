@@ -6,7 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: ["animate-inputError"],
+  safelist: [],
   theme: {
     extend: {
       backgroundImage: {
@@ -27,6 +27,17 @@ const config: Config = {
       },
       animation: {
         inputError: "inputError 1s linear",
+      },
+      backgroundColor: {
+        basic: {
+          default: "#d9d9d9",
+          happy: "#9E9CC7",
+          sad: "#FCB539",
+          energetic: "#DEE5F8",
+          sick: "#FFB7B8",
+          neutral: "#D7E762",
+          angry: "#7386C7",
+        },
       },
     },
   },
