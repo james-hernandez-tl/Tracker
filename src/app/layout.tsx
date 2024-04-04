@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { OptionProvider } from "@/providers/optionContext";
 import DateProvider from "@/providers/dateProvider";
+import ShowDatesProvider from "@/providers/showDateProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} px-20 py-10`}>
+        <Toaster position="top-center" />
         <DateProvider>
-          <OptionProvider>{children}</OptionProvider>
+          <ShowDatesProvider>
+            <OptionProvider>{children}</OptionProvider>
+          </ShowDatesProvider>
         </DateProvider>
       </body>
     </html>

@@ -4,6 +4,7 @@ import Grid from "../components/Grid";
 import SaveBtn from "../components/SaveBtn";
 import getUsersMoods from "../serverFunctions/getUsersMoods";
 import normalizeDates from "@/helpers/normalizeDates";
+import DateInput from "../components/DateInput";
 
 export default async function Monthly({
   params,
@@ -39,6 +40,7 @@ export default async function Monthly({
         </div>
       </div>
       <SaveBtn topic={params.emotion} data={data} />
+      <DateInput />
     </section>
   );
 }

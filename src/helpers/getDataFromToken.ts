@@ -6,7 +6,6 @@ export const getDataFromToken = () => {
     const cookieStore = cookies();
     const token = cookieStore.get("token")?.value;
     if (!token) return;
-
     const decodedToken: any = jwt.verify(token, process.env.TOKEN_SECRET!);
 
     return decodedToken.id;

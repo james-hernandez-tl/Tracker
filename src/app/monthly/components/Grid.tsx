@@ -6,12 +6,12 @@ import Square from "@/app/components/Square";
 import changeOption from "@/helpers/changeOption";
 
 export default async function Grid({ data }: any) {
-  const allDates = [];
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
   const daysInMonth = new Date(year, month, 0).getDate();
 
+  const allDates = [];
   for (let i = 1; i <= daysInMonth; i++) {
     allDates.push(`${year}-${month + 1}-${i}`);
   }
@@ -36,5 +36,5 @@ function isClient(date: string) {
 
   const currentDay = new Date().getDay();
 
-  return day <= currentDay && day > currentDay - 2;
+  return day <= currentDay && day >= currentDay - 2;
 }

@@ -3,7 +3,8 @@ import React from "react";
 import { Emotion } from "../[emotion]/page";
 import { useOptions } from "@/providers/optionContext";
 import { useDate } from "@/providers/dateProvider";
-import createUserMood from "../serverFunctions/createUserMood";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function SaveBtn({
   topic,
@@ -12,25 +13,37 @@ export default function SaveBtn({
   topic: Emotion;
   data: any;
 }) {
-  const { selectedDate, setSelectedDate } = useDate();
-  const { option, setOption } = useOptions();
+  const { selectedDate } = useDate();
+  const { option } = useOptions();
+  const visible = selectedDate && option;
 
-  const handleClick = () => {
-    if (!selectedDate || !option) {
-      return;
-    }
+  const handleClick = async () => {
+    try {
+      const exist = data[selectedDate];
+      const url = `/api/${topic}`;
 
-    const exist = data[""];
-    switch (topic) {
-      case "moods":
-        if (exist) return;
-        return;
+      if (exist) {
+        await axios.put(url, { ...exist, choice: option });
+        return toast.success("mood updated!");
+      } else {
+        await axios.post(url, { date: selectedDate, choice: option });
+        return toast.success("mood created!");
+      }
+    } catch (error: any) {
+      return toast.error("couldn't create mood");
     }
   };
 
   return (
-    <button className="py-1 px-3 bg-sky-500 text-white rounded hover:bg-sky-600">
-      Save
-    </button>
+    <>
+      {visible && (
+        <button
+          onClick={handleClick}
+          className="py-1 px-3 bg-sky-500 text-white rounded hover:bg-sky-600"
+        >
+          Save
+        </button>
+      )}
+    </>
   );
 }
