@@ -11,7 +11,7 @@ export default function Square({
 }: params) {
   const { selectedDate, setSelectedDate } = useDate();
   const { option, setOption } = useOptions();
-  const { showDates, setShowDates } = useShowDates();
+  const { showDates } = useShowDates();
 
   const handleClick = () => {
     if (!clickable) return;

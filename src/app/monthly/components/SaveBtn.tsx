@@ -5,6 +5,7 @@ import { useOptions } from "@/providers/optionContext";
 import { useDate } from "@/providers/dateProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import refreshPath from "@/helpers/refreshPath";
 
 export default function SaveBtn({
   topic,
@@ -24,11 +25,12 @@ export default function SaveBtn({
 
       if (exist) {
         await axios.put(url, { ...exist, choice: option });
-        return toast.success("mood updated!");
+        toast.success("mood updated!");
       } else {
         await axios.post(url, { date: selectedDate, choice: option });
-        return toast.success("mood created!");
+        toast.success("mood created!");
       }
+      return await refreshPath("/monthly/moods");
     } catch (error: any) {
       return toast.error("couldn't create mood");
     }

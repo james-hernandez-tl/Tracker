@@ -1,9 +1,5 @@
 import React from "react";
-import getUsersMoods from "../serverFunctions/getUsersMoods";
-import createUserMood from "../serverFunctions/createUserMood";
-import normalizeDates from "@/helpers/normalizeDates";
 import Square from "@/app/components/Square";
-import changeOption from "@/helpers/changeOption";
 
 export default async function Grid({ data }: any) {
   const currentDate = new Date();
@@ -34,7 +30,7 @@ function isClient(date: string) {
   const dayString = date.slice(7);
   const day = Number(dayString);
 
-  const currentDay = new Date().getDay();
+  const currentDay = new Date().getDate();
 
   return day <= currentDay && day >= currentDay - 2;
 }

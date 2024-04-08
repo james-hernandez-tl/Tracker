@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
+import hashToken from "./helpers/hashToken";
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
+  const publicPaths = ["/login", "/signup", "/verifyemail", "/"];
+  const isPublicPath = publicPaths.includes(path);
 
-  const isPublicPath =
-    path === "/login" || path === "/signup" || path === "/verifyemail";
-
-  const token = request.cookies.get("token")?.value || "";
+  const token = hashToken(request);
 
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
@@ -28,5 +28,6 @@ export const config = {
     "/signup",
     "/verifyemail",
     "/profile",
+    "/dashboard",
   ],
 };

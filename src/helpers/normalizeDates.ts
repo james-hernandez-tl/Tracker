@@ -5,7 +5,7 @@ export default function (emotions: emotion[]) {
     const currentDate = new Date(emotion.createdAt);
     const dateString = `${currentDate.getFullYear()}-${
       currentDate.getMonth() + 1
-    }-${currentDate.getDay()}`;
+    }-${currentDate.getDate()}`;
 
     emotionObject[dateString] = emotion;
   }

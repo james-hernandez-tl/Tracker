@@ -14,9 +14,9 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
     removeTimeFromDate(date);
     const mood = await Mood.findOne({ userId, createdAt: date });
+
     if (mood) {
       return NextResponse.json(
         { error: "This mood has already been created" },

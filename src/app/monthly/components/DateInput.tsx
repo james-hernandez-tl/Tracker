@@ -8,7 +8,7 @@ export default function DateInput() {
     <input
       type="checkbox"
       checked={showDates}
-      onClick={(e) => setShowDates((state) => !state)}
+      onChange={(e) => setShowDates(e.target.checked)}
     />
   );
 }
