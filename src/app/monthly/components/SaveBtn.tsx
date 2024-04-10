@@ -1,19 +1,13 @@
 "use client";
 import React from "react";
-import { Emotion } from "../[emotion]/page";
+import { Topic } from "../[topic]/page";
 import { useOptions } from "@/providers/optionContext";
 import { useDate } from "@/providers/dateProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
 import refreshPath from "@/helpers/refreshPath";
 
-export default function SaveBtn({
-  topic,
-  data,
-}: {
-  topic: Emotion;
-  data: any;
-}) {
+export default function SaveBtn({ topic, data }: { topic: Topic; data: any }) {
   const { selectedDate } = useDate();
   const { option } = useOptions();
   const visible = selectedDate && option;
@@ -41,7 +35,7 @@ export default function SaveBtn({
       {visible && (
         <button
           onClick={handleClick}
-          className="py-1 px-3 bg-[#FFB7B8] rounded-xl text-[#DF5249] text-sm"
+          className="h-6 px-3 bg-[#FFB7B8] rounded-xl text-[#DF5249] text-sm hover:bg-[#FAACA2]"
         >
           Save
         </button>

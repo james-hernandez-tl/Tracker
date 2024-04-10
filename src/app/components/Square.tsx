@@ -25,12 +25,15 @@ export default function Square({
   };
 
   const isSelected = date === selectedDate || (!date && choice === option);
+  if (date === selectedDate && option) {
+    choice = option;
+  }
 
   return (
     <div
       className={`w-11 h-11 min-w-[2.75rem] bg-basic-${choice} relative flex justify-center items-center ${
         clickable && "hover:outline-purple-400 hover:outline cursor-pointer"
-      } ${isSelected && "outline-purple-500 outline outline-[2px] "}`}
+      } ${isSelected && "outline-purple-500 outline outline-[2px]"}`}
       onClick={handleClick}
     >
       {showDates && date?.slice(7)}

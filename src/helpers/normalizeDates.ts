@@ -1,4 +1,4 @@
-export default function (emotions: emotion[]) {
+export default function normalizeDates(emotions: emotion[]) {
   const emotionObject: any = {};
 
   for (let emotion of emotions) {
