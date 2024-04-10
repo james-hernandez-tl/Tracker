@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
     const { token, password } = reqBody;
-    console.log(token);
 
     const user = await User.findOne({
       forgotPasswordToken: token,
@@ -19,8 +18,6 @@ export async function POST(request: NextRequest) {
     if (!user) {
       return NextResponse.json({ error: "Invalid Token" }, { status: 400 });
     }
-
-    console.log("user", user);
 
     user.forgotPasswordTokenExpiry = undefined;
     user.forgotPasswordToken = undefined;

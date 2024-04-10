@@ -41,7 +41,7 @@ export default function SaveBtn({
       {visible && (
         <button
           onClick={handleClick}
-          className="py-1 px-3 bg-sky-500 text-white rounded hover:bg-sky-600"
+          className="py-1 px-3 bg-[#FFB7B8] rounded-xl text-[#DF5249] text-sm"
         >
           Save
         </button>

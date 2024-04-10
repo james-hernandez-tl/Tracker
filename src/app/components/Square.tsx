@@ -28,8 +28,8 @@ export default function Square({
 
   return (
     <div
-      className={`w-10 h-10 bg-basic-${choice} relative flex justify-center items-center ${
-        clickable && "hover:outline-purple-400 hover:outline "
+      className={`w-11 h-11 min-w-[2.75rem] bg-basic-${choice} relative flex justify-center items-center ${
+        clickable && "hover:outline-purple-400 hover:outline cursor-pointer"
       } ${isSelected && "outline-purple-500 outline outline-[2px] "}`}
       onClick={handleClick}
     >

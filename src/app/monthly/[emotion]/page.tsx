@@ -16,31 +16,39 @@ export default async function Monthly({
   return (
     <section id="Monthly">
       <div className="w-fit">
-        <h1 className="text-5xl font-semibold">
+        <h1 className="text-5xl font-medium text-[#FFB7B8] relative">
           Lets talk... {params.emotion}.
+          <div className="w-full text-right text-xl text-[#FFB7B8] absolute -bottom-7 italic">
+            How did you feel today?
+          </div>
         </h1>
-        <div className="w-full text-right text-xl">How did you feel today?</div>
+      </div>
+
+      <div className="text-xl text-[#FFB7B8] w-full flex justify-end">
+        <div className="max-w-20 max-w-xs italic font-medium">
+          Choose an emotion option that describes your day.
+        </div>
       </div>
 
       <div className="flex justify-between">
-        {getComponentForTopic(params.emotion, data)}
-        <div>
-          <div className="text-xl">
-            <div>Choose an emotion option</div>
-            <div>that describes your day.</div>
+        <div className="relative">
+          {getComponentForTopic(params.emotion, data)}
+          <div className="absolute bottom-0 right-0">
+            <SaveBtn topic={params.emotion} data={data} />
+            <DateInput />
           </div>
+        </div>
+        <div>
           <div className="flex-col gap-2 flex pt-4">
             {emotionOptions[params.emotion].map(({ text, choice }, index) => (
-              <div className="flex gap-2 content-end" key={index}>
+              <div className="flex gap-2 items-center max-w-xs" key={index}>
                 <Square clickable={true} choice={choice} />
-                <div className="h-min">{text}</div>
+                <div className="flex break-words">{text}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <SaveBtn topic={params.emotion} data={data} />
-      <DateInput />
     </section>
   );
 }

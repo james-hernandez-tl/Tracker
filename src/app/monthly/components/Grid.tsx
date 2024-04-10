@@ -13,7 +13,7 @@ export default async function Grid({ data }: any) {
   }
 
   return (
-    <div className="grid grid-cols-7 auto-rows-min gap-x-1 gap-y-1">
+    <div className="grid grid-cols-7 auto-rows-min gap-x-2 gap-y-2">
       {allDates.map((date) => (
         <Square
           choice={data[date]?.choice}

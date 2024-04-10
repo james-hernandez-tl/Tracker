@@ -11,8 +11,6 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { username, email, password } = reqBody;
 
-    console.log(reqBody);
-
     //check if user exist
     const user = await User.findOne({
       $or: [{ email: email }, { username: username }],
@@ -31,7 +29,7 @@ export async function POST(request: NextRequest) {
     //hash password
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
-    console.log("created Password");
+
     const newUser = new User({
       username,
       email,
@@ -39,8 +37,6 @@ export async function POST(request: NextRequest) {
     });
 
     const savedUser = await newUser.save();
-
-    console.log(savedUser);
 
     await sendMail({ email, emailType: "VERIFY", userId: savedUser._id });
 

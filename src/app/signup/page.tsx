@@ -48,7 +48,7 @@ export default function SignupPage() {
       router.push("/login");
     } catch (error: any) {
       const errorMessage = error.response?.data?.error;
-      console.log(error.response);
+
       if (errorMessage.includes("email")) {
         handleInputErrorAnimation(emailRef);
       } else if (errorMessage.includes("username")) {
