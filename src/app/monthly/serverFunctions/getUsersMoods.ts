@@ -1,7 +1,7 @@
 import Mood from "@/models/moodModel";
 import { connect } from "@/dbConfig/dbConfig";
 import me from "@/helpers/me";
-import getStartAndEndDate from "@/helpers/getStartandEndDate";
+import getStartAndEndDate from "@/helpers/getStartAndEndDate";
 
 connect();
 

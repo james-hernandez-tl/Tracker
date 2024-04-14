@@ -70,6 +70,7 @@ const topicOptions: TopicOptions = {
     { text: "Cold / Cough", choice: "cold" },
     { text: "Headache", choice: "headache" },
     { text: "Hangover", choice: "hangover" },
+    { text: "Brain Fog", choice: "fog" },
   ],
 };
 

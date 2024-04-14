@@ -1,7 +1,7 @@
 import Health from "@/models/healthModel";
 import { connect } from "@/dbConfig/dbConfig";
 import me from "@/helpers/me";
-import getStartAndEndDate from "@/helpers/getStartandEndDate";
+import getStartAndEndDate from "@/helpers/getStartAndEndDate";
 
 connect();
 

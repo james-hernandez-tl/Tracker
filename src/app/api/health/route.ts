@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 import removeTimeFromDate from "@/helpers/removeTimeFromDate";
-import Mood from "@/models/moodModel";
+import Health from "@/models/healthModel";
 import { connect } from "@/dbConfig/dbConfig";
 
 connect();
@@ -18,24 +18,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const mood = await Mood.findOne({ userId, createdAt: date });
+    const health = await Health.findOne({ userId, createdAt: date });
 
-    if (mood) {
+    if (health) {
       return NextResponse.json(
-        { error: "This mood has already been created" },
+        { error: "This health has already been created" },
         { status: 400 }
       );
     }
 
-    const newMood = new Mood({
+    const newHealth = new Health({
       createdAt: date,
       userId,
       choice,
     });
 
-    const savedMood = await newMood.save();
+    const savedHealth = await newHealth.save();
 
-    return NextResponse.json({ data: savedMood, success: true });
+    return NextResponse.json({ data: savedHealth, success: true });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -52,11 +52,11 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const mood = await Mood.findByIdAndUpdate(_id, { choice });
+    const health = await Health.findByIdAndUpdate(_id, { choice });
 
-    if (!mood) {
+    if (!health) {
       return NextResponse.json(
-        { error: "Mood has been created yet" },
+        { error: "Health has been created yet" },
         { status: 400 }
       );
     }

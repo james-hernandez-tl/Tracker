@@ -9,4 +9,9 @@
   "bg-basic-sick",
   "bg-basic-neutral",
   "bg-basic-angry",
+  "bg-basic-well",
+  "bg-basic-cold",
+  "bg-basic-headache",
+  "bg-basic-hangover",
+  "bg-basic-fog",
 ];

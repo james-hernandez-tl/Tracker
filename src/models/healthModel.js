@@ -15,6 +15,6 @@ const healthSchema = mongoose.Schema({
   },
 });
 
-const health = mongoose.models.Health || mongoose.model("Health", healthSchema);
+const Health = mongoose.models.Health || mongoose.model("Health", healthSchema);
 
-export default health;
+export default Health;

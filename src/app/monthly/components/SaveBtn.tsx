@@ -19,10 +19,10 @@ export default function SaveBtn({ topic, data }: { topic: Topic; data: any }) {
 
       if (exist) {
         await axios.put(url, { ...exist, choice: option });
-        toast.success("mood updated!");
+        toast.success(`${topic} updated!`);
       } else {
         await axios.post(url, { date: selectedDate, choice: option });
-        toast.success("mood created!");
+        toast.success(`${topic} created!`);
       }
       return await refreshPath("/monthly/moods");
     } catch (error: any) {
