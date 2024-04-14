@@ -2,9 +2,8 @@ import React from "react";
 import Square from "@/app/components/Square";
 import Grid from "../components/Grid";
 import SaveBtn from "../components/SaveBtn";
-import getUsersMoods from "../serverFunctions/getUsersMoods";
-import getUsersHealth from "../serverFunctions/getUsersHealth";
 import normalizeDates from "@/helpers/normalizeDates";
+import getUsersMonthlyData from "../serverFunctions/getUsersMonthlyData";
 import DateInput from "../components/DateInput";
 
 export default async function Monthly({
@@ -12,7 +11,8 @@ export default async function Monthly({
 }: {
   params: { topic: Topic };
 }) {
-  const data = await getDataForTopic(params.topic);
+  const monthlyData = await getUsersMonthlyData(params.topic);
+  const data = normalizeDates(monthlyData);
 
   return (
     <section id="Monthly">
@@ -85,18 +85,6 @@ type optionData = {
 };
 
 export type Topic = "moods" | "health";
-
-async function getDataForTopic(topic: Topic) {
-  let data;
-  switch (topic) {
-    case "moods":
-      data = await getUsersMoods();
-      return normalizeDates(data);
-    case "health":
-      data = await getUsersHealth();
-      return normalizeDates(data);
-  }
-}
 
 function getComponentForTopic(topic: Topic, data: any) {
   if (topic === "moods" || topic === "health") {

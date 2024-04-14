@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
-import removeTimeFromDate from "@/helpers/removeTimeFromDate";
 import Mood from "@/models/moodModel";
 import { connect } from "@/dbConfig/dbConfig";
 
