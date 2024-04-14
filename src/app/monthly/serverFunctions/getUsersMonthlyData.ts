@@ -1,4 +1,5 @@
 import Mood from "@/models/moodModel";
+import Anxiety from "@/models/anxietyModel";
 import Health from "@/models/healthModel";
 import { connect } from "@/dbConfig/dbConfig";
 import me from "@/helpers/me";
@@ -31,5 +32,7 @@ function getTopicModel(topic: Topic) {
       return Mood;
     case "health":
       return Health;
+    case "anxiety":
+      return Anxiety;
   }
 }

@@ -22,7 +22,7 @@ export default function SaveBtn({ topic, data }: { topic: Topic; data: any }) {
         toast.success(`${topic} updated!`);
       } else {
         await axios.post(url, { date: selectedDate, choice: option });
-        toast.success(`${topic} created!`);
+        toast.success(`${topic} saved!`);
       }
       return await refreshPath("/monthly/moods");
     } catch (error: any) {

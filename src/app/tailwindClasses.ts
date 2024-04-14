@@ -14,4 +14,9 @@
   "bg-basic-headache",
   "bg-basic-hangover",
   "bg-basic-fog",
+  "bg-basic-none",
+  "bg-basic-low",
+  "bg-basic-medium",
+  "bg-basic-high",
+  "bg-basic-extreme",
 ];

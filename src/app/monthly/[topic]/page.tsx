@@ -11,7 +11,7 @@ export default async function Monthly({
 }: {
   params: { topic: Topic };
 }) {
-  const monthlyData = await getUsersMonthlyData(params.topic);
+  const monthlyData: any = await getUsersMonthlyData(params.topic);
   const data = normalizeDates(monthlyData);
 
   return (
@@ -72,11 +72,19 @@ const topicOptions: TopicOptions = {
     { text: "Hangover", choice: "hangover" },
     { text: "Brain Fog", choice: "fog" },
   ],
+  anxiety: [
+    { text: "None", choice: "none" },
+    { text: "Low", choice: "low" },
+    { text: "Medium", choice: "medium" },
+    { text: "High", choice: "high" },
+    { text: "Extreme", choice: "extreme" },
+  ],
 };
 
 type TopicOptions = {
   moods: optionData[];
   health: optionData[];
+  anxiety: optionData[];
 };
 
 type optionData = {
@@ -84,10 +92,11 @@ type optionData = {
   choice: string;
 };
 
-export type Topic = "moods" | "health";
+export type Topic = "moods" | "health" | "anxiety";
 
 function getComponentForTopic(topic: Topic, data: any) {
-  if (topic === "moods" || topic === "health") {
+  const GridTopics = ["moods", "health", "anxiety"];
+  if (GridTopics.includes(topic)) {
     return <Grid data={data} />;
   }
 }
